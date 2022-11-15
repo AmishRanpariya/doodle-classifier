@@ -22,7 +22,7 @@ let model;
 let canvas;
 let state = "testing";
 let res;
-
+let clearButton;
 function setup() {
 	canvas = createCanvas(IMAGE_WIDTH_FOR_PREVIEW * 2, IMAGE_WIDTH_FOR_PREVIEW);
 	pixelDensity(1);
@@ -139,9 +139,12 @@ function setup() {
 	pg.strokeWeight(0.5);
 	pg.stroke(0);
 	pg.noFill();
+	pg.background(255);
 	background(255);
 
 	res = createDiv("Result:");
+	clearButton = createButton("Clear");
+	clearButton.mousePressed(clearCanvas);
 }
 
 let doodle = [];
@@ -152,7 +155,7 @@ function draw() {
 	if (state == "training") {
 	} else if (state == "testing") {
 		if (mouseIsPressed) {
-			pg.strokeWeight(0.2);
+			pg.strokeWeight(1);
 			pg.line(pmouseX / RATIO, pmouseY / RATIO, mouseX / RATIO, mouseY / RATIO);
 			strokeWeight((1 * RATIO) / 2);
 			line(pmouseX, pmouseY, mouseX, mouseY);
@@ -256,10 +259,14 @@ function keyPressed() {
 		console.log("PREDICT MODE");
 		state = "testing";
 	} else if (key == "x") {
+		clearCanvas();
 		console.log("CLEARED");
-		pg.background(255);
-		background(255);
 	}
+}
+
+function clearCanvas() {
+	pg.background(255);
+	background(255);
 }
 
 function modelReady() {

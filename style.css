@@ -12,6 +12,8 @@ body {
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
+
+	overscroll-behavior: contain;
 }
 div {
 	color: #aaa;

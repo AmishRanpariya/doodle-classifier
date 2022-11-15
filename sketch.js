@@ -35,7 +35,7 @@ let state = "testing";
 let res;
 let clearButton;
 function setup() {
-	canvas = createCanvas(IMAGE_WIDTH_FOR_PREVIEW * 2, IMAGE_WIDTH_FOR_PREVIEW);
+	canvas = createCanvas(IMAGE_WIDTH_FOR_PREVIEW  , IMAGE_WIDTH_FOR_PREVIEW);
 	pixelDensity(1);
 	const layers = [
 		{
@@ -176,13 +176,13 @@ function draw() {
 			classifyCanvas();
 		}
 	}
-	image(
-		pg,
-		IMAGE_WIDTH_FOR_PREVIEW,
-		0,
-		IMAGE_WIDTH_FOR_PREVIEW,
-		IMAGE_WIDTH_FOR_PREVIEW
-	);
+	// image(
+	// 	pg,
+	// 	IMAGE_WIDTH_FOR_PREVIEW,
+	// 	0,
+	// 	IMAGE_WIDTH_FOR_PREVIEW,
+	// 	IMAGE_WIDTH_FOR_PREVIEW
+	// );
 }
 
 function classifyCanvas() {

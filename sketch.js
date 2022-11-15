@@ -5,7 +5,7 @@
 const IMAGE_WIDTH_FOR_MODEL = 36;
 const IMAGE_CHANNELS_FOR_MODEL = 4;
 
-const IMAGE_WIDTH_FOR_PREVIEW = 36 * 16;
+const IMAGE_WIDTH_FOR_PREVIEW = 36 * 20;
 
 const RATIO = IMAGE_WIDTH_FOR_PREVIEW / IMAGE_WIDTH_FOR_MODEL;
 
@@ -35,7 +35,7 @@ let state = "testing";
 let res;
 let clearButton;
 function setup() {
-	canvas = createCanvas(IMAGE_WIDTH_FOR_PREVIEW  , IMAGE_WIDTH_FOR_PREVIEW);
+	canvas = createCanvas(IMAGE_WIDTH_FOR_PREVIEW, IMAGE_WIDTH_FOR_PREVIEW);
 	pixelDensity(1);
 	const layers = [
 		{

@@ -9,6 +9,17 @@ const IMAGE_WIDTH_FOR_PREVIEW = 36 * 8;
 
 const RATIO = IMAGE_WIDTH_FOR_PREVIEW / IMAGE_WIDTH_FOR_MODEL;
 
+const emojiMapping = {
+	lollipop: "lollipop🍭",
+	basketball: "basketball🏀",
+	airplane: "airplane✈️",
+	circle: "circle⭕",
+	square: "square⏹️",
+	triangle: "triangle🔼",
+	moon: "moon🌙",
+	apple: "apple🍎",
+};
+
 let mixedData = [];
 function preload() {
 	// loadJSON("/data/6mixed4000each.json", (data) => {
@@ -129,9 +140,9 @@ function setup() {
 	model = ml5.neuralNetwork(options);
 	// model = ml5.imageClassifier("DoodleNet", modelReady);
 	const modelDetails = {
-		weights: "models/400model2cat/model.weights.bin",
-		model: "models/400model2cat/model.json",
-		metadata: "models/400model2cat/model_meta.json",
+		weights: "models/1400model6cat/model.weights.bin",
+		model: "models/1400model6cat/model.json",
+		metadata: "models/1400model6cat/model_meta.json",
 	};
 	model.load(modelDetails, modelLoaded);
 
@@ -183,11 +194,13 @@ function gotResult(error, results) {
 		console.error(error);
 	}
 	if (results?.[0]?.label) {
+		console.log(results[0].label);
 		res.html(
 			"Result: " +
-				results[0].label +
+				emojiMapping[results[0].label] +
 				"<br/>Confidence: " +
-				results[0].confidence
+				floor(results[0].confidence * 100) +
+				"%"
 		);
 	} else {
 		res.html("Result: Awaiting");

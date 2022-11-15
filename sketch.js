@@ -11,16 +11,16 @@ const RATIO = IMAGE_WIDTH_FOR_PREVIEW / IMAGE_WIDTH_FOR_MODEL;
 
 let mixedData = [];
 function preload() {
-	loadJSON("/data/6mixed4000each.json", (data) => {
-		mixedData = data.data;
-		mixedData = shuffle(mixedData);
-	});
+	// loadJSON("/data/6mixed4000each.json", (data) => {
+	// 	mixedData = data.data;
+	// 	mixedData = shuffle(mixedData);
+	// });
 }
 
 let pg;
 let model;
 let canvas;
-let state = "training";
+let state = "testing";
 let res;
 
 function setup() {
@@ -133,7 +133,7 @@ function setup() {
 		model: "models/400model2cat/model.json",
 		metadata: "models/400model2cat/model_meta.json",
 	};
-	// model.load(modelDetails, modelLoaded);
+	model.load(modelDetails, modelLoaded);
 
 	pg = createGraphics(IMAGE_WIDTH_FOR_MODEL, IMAGE_WIDTH_FOR_MODEL);
 	pg.strokeWeight(0.5);
